@@ -1,1 +1,28 @@
- -
+- WebGL is more simple
+- Projects are given with skeleton code
+- Ray tracing:
+    - Follow rays of light from a point source finding which rays enter the lens of the camera
+    - Each raw of light may have multiple interactions with objects before being absorbed or going to infinity
+- Luminance Image:
+    - Monochromatic
+    - Values are grey levels
+    - Represent each pixel using one byte
+- Colour images:
+    - RGB values
+    - Has perceptional attributes of due, saturation, and lightness (HSL)
+- Human vision:
+    - Rods: Monochromatic, night vision
+    - Cones:
+        - Colour sensitive
+        - Three types of cones
+        - Only 3 values (RGB) are sent to the brain
+        - More Red and green cones (blue < 5%)
+            - Less sensitive to blue light
+- Aditive colour:
+    - Form colour by adding amounts of RGB
+- Subtractive colour:
+    - Form a colour by filtering white light with cyan, magenta and yellow filters
+    - Adding them together gives black
+    - Colours become darker the more added
+    - Good for printing
+    - CMYK
