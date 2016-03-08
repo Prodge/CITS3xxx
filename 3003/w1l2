@@ -1,0 +1,6 @@
+- glutDisplayFunc(my_function)
+    - My_function contains instructions for redrawing the scene
+- glutKeyboardFunc(keyboard)
+    - keyboard() is a function for handling keyboard events
+    - It recieves the keys pressed
+- vec2 is a 2D vector

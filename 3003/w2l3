@@ -1,0 +1,18 @@
+- Verticies > Vertex processor > Clipper and primitive assembler > Rasteriser > fragment processor > pixels
+- Vertex processing:
+    - Converting from one coordinate system to another:
+        - Object coordinates
+        - Camera coordinates
+        - Screen coordinates
+    - Every change of coords is equivalent to a matrix transformation
+    - Also computes colours
+- Projection:
+    - The process that combines the 3D viewer with 3D objects to produce the 3D image
+    - Perspective projection: All projectors meet at the centre of projection
+    - Parallel projection: Projectors are paralles, center of projection is replaced by a direction of projection
+- Primative assembly:
+    - Verticies must be collected into geometric objects before clipping and rasterization can take place:
+        - Line segments
+        - Polygons
+        - Curves and surfaces
+- Objects that are not within view are said to be clipped out of the scene

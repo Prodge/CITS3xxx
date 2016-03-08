@@ -1,0 +1,47 @@
+- Mid Semester Test:
+    - Short answer questions
+    - 10-12 Questions
+- Project needs to be resiliant to attacks
+- Previous projects have been open ended (there have been no perfect solutions to them)
+- Computers are autonomous if there is not a permanent master/slave relationship between them
+- A computer network is an interconnected collection of autanamous computers
+- Security is a mental activity:
+    - Security vulnerabilities need to be constantly thought about
+    - It's not something that can be set and forgot
+- Need to determine the potential threats inorder to implement the appropriate solutions
+- Active threats:
+    - Botnets (needs a host program)
+    - Self reproducing worms
+    - Rootkits
+- Passive threats:
+    - Keylogging
+    - Packet sniffing
+    - EMF monitoring and bridging air-gap networks
+    - Simple social engineering
+- What is vulnerable:
+    - People (social engineering)
+    - Practices (using out-of-the-box configurations)
+    - Programs
+    - Protocols
+- Threat countermeasures:
+    - Improved education
+    - Reduced system complexity
+    - Increased software testing
+    - Improved physical protection
+    - Improved authentication
+    - Improved authorization
+    - Increased use of biometrics
+    - A Better understanding of encryption
+- Cryptography is a process / mindset
+- A computer protocol consists of an agreed format for messages expressed by a packet header, an optional message component and a set of rules for the enchange of messages between computers
+- OSI model: Open systems interconnect moel
+    - Allows for a protocol standard that people can write their own implementations for
+    - Encourages that the software is written in layers
+        - A Given layer is only responsible to the layers above and below it
+- ISO: International standards organization
+- TCP: Transmission control protocol
+- Network layer functions:
+    - Routing
+    - Relaying: Enables data transfer across networks
+    - Flow Control: Matches traffic flow with the physical capacity of a transmission path
+    - Sequencing: Ordering of frames across a network
