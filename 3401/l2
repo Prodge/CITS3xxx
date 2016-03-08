@@ -1,0 +1,80 @@
+- Frequent patterns (frequent item sets): what items are frequently purchased together
+- Association, correlation vs casualty:
+    - A typical association rule:
+        - Milk -> bread (0.5%, 75%) (support, confidence)
+- Classification and label prediction:
+    - Construct models based on some training examples or rules
+    - Supervised learning:
+        - You have the features and a known category
+    - Describe and distinguish classes or concepts for future prediction
+- Cluster analysis
+    - Unsupervised learning:
+        - Class label is unknown
+- Outlier analysis:
+    - Most data mining methods discard outliers
+- Sequential pattern, trend and evolution analysis
+    - trend, time-series and deviation analysis
+    - Sequential pattern mining
+        - eg. buy digital camera, then buy sd card
+    - Periodicity analysis
+        - Evolution patterns over time
+Data warehousing
+- A data warehouse is:
+    - Subject oruented
+        - Organised around major subjects (eg. customer, suppleor, product ...)
+        - Focusing on the modeling and analysis of data for desision makers (not concentrating on daily operations)
+    - Integrated
+        - Constructed by integrating hetrogeneous (can come with different schema) data sources
+        - Data cleaning and data integration techniques are applied
+            - Ensures consistancy in naming conventions, encoding structures, etc. among different data sources
+    - Time-variant
+        - The time horizon for the data warehouse is significantly longer than that of operational systems
+            - Operational database: Current value data
+            - Data warehouse data: provide information from a historical perspective
+        - Every key structure in the data warehouse Contains a seperate key
+    - Non volatile
+        - Operational update of data does not occur in the data warehouse environment
+        - A phycically seperate store of data tranformed from the operational evnironment
+- The purpose of a datawarehouse is to support decision making
+- Data warehouse (OLAP) (on-line analytical processing)
+    - no need for concurency support
+    - Optimised for query throughput
+- Operational DBMS (OLTP) (on-line transactional processing)
+    - Major task of a relational dbms
+    - Day to day operations
+    - Optimised for transacton throughput
+- Enterprise warehouse:
+    - Collects all the information about subjects spanning the entire organisation
+    - Collects both detailed and summerised data
+- Data mart
+    - Contains a subset of corporate data that is of value to a specific group of users
+    - Summerised data
+        - User specific detail is removed for privacy
+    - The scope is limited to selected subjects
+- Virtual warehous is a set of views over operational databases
+    - For efficient query processing, only some of the possible summary views may be materialized
+- A data warehouse allows for:
+    - Historical data which operational DB's typically do not maintain
+    - Data consolidation from difference sources
+    - Data quality can be improved by processes of cleaning data and reconciling different formats
+- Information processing
+    - Supports querying, statistical analysis and reporting
+- Analytical processing:
+    - Multidimensional analysis of data warehouse data
+    - Supports basic OLAP operations, slice-dice, drilling, pivoting
+- Data mining
+    - Knowledge discovery from hidden patterns
+    - Supports associations, constructing data models, performing classification
+- A data warehouse is based on a multidimensional data model
+    - Data cube: Base cube, apex cube, concept of heirarchies
+    - Schemas: Star, snowflakes, fact constellations
+    - Operations: slice-dice, drilling, pivoting
+- A data cube is organised around a central theme such as 'sales'
+    - It allows data to be modeled and viewed in multiple diensions
+    - It's a metaphor and doesn't actually confine models to 3d
+- Star schema:
+    - Consists of one or more fact tables referencing any number of dimesniosal table
+    - The fact table contains a key reference for each dimensional table which correspond to certain measures
+- Fact constellation - Galaxy schema:
+    - Multiple fact tables sharing attributes from the dimensional tables which correspond to their own calculated measures
+
