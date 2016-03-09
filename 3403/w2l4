@@ -1,0 +1,20 @@
+- The <time> element allows for fuzzy dates
+    - <time datetime=11-1905></time> means november 1905
+    - Can also contain periods of time
+    - the boolean attribute pubdate can be added to indicate a publication date
+- Figure element represents some self-contained content, usually this is an image
+    <figure>
+        <img>
+        <figcaption>img caption here</figcaption>
+    </figure>
+- Styling can be inline, document level or external
+- Selectors:
+    |------------+---------------------|
+    | General    | p{}                 |
+    | Group      | h1,h2{}             |
+    | Contextual | strong em {}        |
+    | Attribute  | div[secret="yes"]{} |
+    | Class      | span.important{}    |
+    | ID         | p#thisElement{}     |
+    |------------+---------------------|
+- Pseudo classes: Styles that apply due to an event (eg. mouse hover)
