@@ -1,0 +1,44 @@
+- Rasterization:
+    - If an object is not clipped out, the appropriate pixels in the frame buffer must be assigned colours
+    - The rasterizer produces a set of fragments for each object
+    - Fragments are 'potential pixels'
+        - Have a location in the frame buffer
+        - Colour and depth attributes
+    - Vertex attributes are interpolated over objects by the rasterizer
+- Fragment processing
+    - Fragments are processed te determine the colour  of the corresponding pixel in the frame buffer
+    - Colours can be determined by texture mapping or interpolation of vertex colours
+    - Fragments may be blacked by other fragments closer to the camera
+        - Hidden surface removal
+- Most APIs support a limited set of primitives including
+    - Points - 0D object
+    - Line segments - 1D object
+    - Polygons - 2D object
+    - Some curves and surfaces
+        - Quadratics
+        - Parametric polynomials
+- Camera specification:
+    - Six degrees of freedom:
+        - Position of centre of lens
+        - Orientation
+    - Lens
+    - Film Size
+    - Orientation of film plane
+- Lights
+    - Point sources vs distributed sources
+    - Spot lights
+    - Near and far sources
+    - Color propertios
+- Material properties:
+    - Absorbtion: colour propertios
+    - Scattering
+        - Diffuse
+        - Specular
+- OpenGL is a state machine
+- OpenGL functions are of two types:
+    - Primitive generating
+        - Can cause output if primitive is visible
+        - How vertices are processed and appearance of primitive are controlled by the state
+    - State changing
+        - Transformation functions
+        - Attribute functions
