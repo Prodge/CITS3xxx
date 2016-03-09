@@ -1,0 +1,69 @@
+- Physical link layer responsibilities
+    - Provides the physical topology of the network
+    - Provides the transfer medium
+    - Encodes data into a transmission signal supported by the medium
+    - Monitors for transmission errors
+    - Detects arriving signal levels to synchronise speed and timing
+- Data link layer responsibilities
+    - Constructs data frames using the format of the physical layer
+    - Creates cyclic redundancy codes (CRC) information
+    - Checks for arriving errors using CRC information
+    - Initiates and arbitrates the link to reduce interruption and contention
+    - examines arriving and passing device addresses in data
+    - Retransmits data if there is an error
+    - Acknowledges reciept of a frame
+- UDP
+    - no validation of reciept
+    - Smaller implementation
+    - Faster runnning
+- Latency = propogation delay
+    - Round trip time (RTT) is twice the latency
+- Throughput is usually the measured number of bits per second (actieved), while bandwidth is the nominal (peak) number of bits per second possible
+- TLatency  =  TPropagation + TTransmit + TQueue
+    - TPropagation  = distance / speed-of-propagation-in-medium
+    - TTransmit     = message-size / bandwidth
+    - TQueue        = time-spent-in-local-and-remote-operating-system-and-switch-queues
+- Rates of transmission errors are described by their probability of occuring or by their expecter bit-error-rate (BER)
+- Transmission errors usually occur by bursts and are caused by:
+    - Thermal background noise
+    - Impulse noice (~10ms duration)
+    - Distorted frequency
+    - Crosstalk
+    - Reduction of dynamic range and noice (companding)
+- A Burst begins at the first corrupted bit and ends at the last corrupted bit
+    - Not all the bits between are necessarily corrupted
+- How data is placed in frames:
+    - Simple timing gaps between frames cannot be used as all hardware devices run at slightly different speeds; resulting is sqewing over time
+    - Special prefix and suffix characters ane used to envelope the data
+- A digital signal is a sequence of descrete, discontinuous pulses or signal elements
+- If all signal elements have the same voltage, they are termed unipolar
+- The modulation rate of a lan in the number of signal elements per second or the baud rate
+- To correctly interpret the signal, the receiver must know the length (time) if each signal element and the expected voltage levels of the bits 0 and 1
+- The two simplest encoding schemes are the (these do not offer synchronisation):
+    - Non return to zero level (NRZ-L)
+    - Non return to zero inverted (NRZ-I)
+        - An example of differential encoding in which the signal transition rather than the signal level indicates the value of each bit
+- biphase encoding ensures that there will be a transition in the middle of each bit:
+    - With tratitional manchester encoding the mid-bit transition provides a chocking mechanism (as well as the data)
+    - With diferential matchester the mid-bit transition privides the chocking and the initial transition provides the data
+    - Biphase encoding schemes have at least one transition per bit time
+        - Therefore the makimum modulation rate (or baud rate) is twice that for the NRZ-L and NRZ-I
+        - Invalid signals can be detected when the mid-bit transition is not present
+-}}}
+- Data can be modified so that errors can either be:
+    - Detected: you can only tell that the data is wrong
+    - Corrected: you can unambiguously tell what the data should have been and hence confidently correct it
+- Correction is requesed where communication must be simplex (only possible in one direction), but the correction is expensive
+- Codewords are constructed consisting of both data and check bits
+- The Hamming distance between two codewords consissts of the number of bit positions in which the differ
+    - The difference is performed by modulo-2 or XOR
+- The Hamming destance of a code is the mimimum hamming distance between any two words in that code
+- The extra bits used to detect errors are called checksum bits
+- A polynomial is represented by a bit string with 1 for each power represented by the polynomial and 0 otherwise
+- 16 bit checksums catch:
+    - All single and double bit errors
+    - All errors with an odd number of bits
+    - All burst errors <= 16 bits long
+    - 99.997% of burst errors = 17 bits
+    - 99.998% of birst errors >= 18 bits
+- CRCs are often performed in hardware
