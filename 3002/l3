@@ -1,0 +1,8 @@
+- The data link layer provides the following services between the physical and network sayers:
+    - Bundling and unbundling groups of bits into frames for the physical layer
+    - Throttling the flow of frames between the sender and reciever
+    - Detecting and correcting higher lever transmission errors such as the sequencing of packets from the network sayer
+- Simplex: The sender sends frames without waiting for the reciever to acknowledge them
+- half-duplex: each frame sent is individually acknowledged
+- Full-duplex: Each frame is individually numbered and is gauranteed by the data link layer to be recieved once and only once and in the right order.
+    - The result is that the data link layer presents a reliable frame stream to the network layer

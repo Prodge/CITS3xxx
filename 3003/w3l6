@@ -1,0 +1,46 @@
+- Vertex shadec applications
+    - Geometric transformation
+    - 3D perspective transformation
+    - Moving verticies
+        - Morphing
+        - Wave motion and deformation due to physical forces
+        - Particle effects
+    - Lighting
+- GLSL: OpenGL shading language
+    - high level C like language
+    - Can define variables to be 'in' or 'out'
+- Fragment shader:
+    - Texture mapping
+        - Smooth shading
+        - Environment mapping
+        - Bump mapping
+    - Lighting
+    - There are no pointers in GLSL
+    - Can use C structures
+- Each vector type contains floats
+- Vertex attributes are interpolated by the rasterizer into fragment attributes
+- Attribute-qualified variables can change at most once per vertex
+- Uniform variables are canstant for an entire primative
+    - Can be changed in application and sent to shaders but not changed in shader
+    - Are used to pass information to the shader such as a bounding box of a primative
+- Varying variables are passed from the veretx shader to the fragment shader
+    - Are automatically interpolated by the rasterizer
+    - Are now deprecated for 'out'
+    - Still used on osx
+- Vertex shader:
+    out vec4 color_out;
+    void main(void){
+        color_out = vec4(1,0,0,1);
+    }
+- Fragment shader
+    out vec4 fragment_color;
+    in vec4 color_out;
+    void main(void){
+        fragment_color = color_out;
+    }
+- Selection operators:
+    - Can get the nth element from a vec using standardised xyzw, rgba, stpq
+    - Eg. m[2] = m.b = m.z = m.p
+- Swizzling operator:
+    - Allows you to use multiple selection operators
+    - m.gb is like m[1:2]
