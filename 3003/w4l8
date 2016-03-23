@@ -1,0 +1,3 @@
+- Inline functions are like static methods in java - not OO
+- typedef vec3 color3;
+    - Creates a new type of color3 which is actually a vec3
