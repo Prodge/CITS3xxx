@@ -1,0 +1,80 @@
+- The data link layer has the responsibility of releably transmitting frames across a signle wire
+- The network layers responsibility is to get packets from an actual source machine to a destination machine
+    - There may be many hops along the way
+- The network layer is the lowest OSI layer that has to deal with end-to-end transmission
+- The network layer must be aware of the immediate topolog of its subnet to make sure a routing chouce that makes progress, avoids introducing congestion on links and avouds already congested links
+- If the source and destination machine are on different networks we must support 'internetworking'
+- Network layer design objectives:
+    - To be independent of processor / communication technology
+    - To be independent of the number, type and topology of the subnets
+    - To provide a uniform addressing scheme for all hosts in the network
+- The network layer runs software in routern
+- The transport layer runs in the hosts
+- Except in the trivial 2 node case; some nodes will now have more than one physical link to manage
+- When the network layer presents a packet to the data link layer, it must not indicate which physical link is involved
+- Each link must have its own data link protocol
+- The network layer could implement:
+    - Source and destination functions
+    - store and forward functions
+    - Network-wide management functions
+- Fragmentation: breaking chucks of data into peices or packets containing a header and data
+- The network layer header is created in source code, examined in intermediate nodes (possibly modified) and removed in the destination node
+- NL packets typically contain:
+    - Source and destination addresses
+    - Packet size
+    - Message number
+    - Control bits inticating if the packet is a user packer or a contor packet, frogmented or not , fixed or variable length
+    - flow control information such as permission to send additional messages
+- Packet based delivery
+    - The subnets job is to transmit bits and is knows to be reliable
+    - Only services provided by the networklayer to the transport layer are to perform the operation s of th send packet and receive packet and no negotiation is possible
+    - Routing paths are chosen once per packet (virtual circuits is once per session)
+- Desirable properties for the routing algoritms are similar to those for the whole network layer:
+    - Correctness
+    - Simplicity
+    - Robustness
+    - Stability
+    - Faurness
+- Two classes of routing algorithms
+    - Non-adaptive algorithms
+        - No changes are made (static routing)
+        - Even if multiple routes are possible, if the static route goes down, it is deemed there is no route
+    - Adaptive algorithms
+        - dynamic routing
+        - Try to accont for information in making routing choices
+        - Can attempt to learn more information
+- Flodding gives the shortest packet delay as it always chooses the shortest path (it chooses all paths)
+    - Flooding is dumb
+    - Send every packet to every node, each node does the same (doesn't return to sender) unless there are no choices
+- Distance vector routing algorithms maintain a table in each router of the best known distance to each destination, and the preffered link to that destination
+    - Used in ARPANET
+- Link state routing
+    - Only works with finite networks
+    - 5 steps
+        - Discover their neighbours' network addresses (send request packets, receive reply packets).
+        - Measure the delay or cost to each of its neighbours (immediate delay, or queued delay?).
+        - Construct link-state packets containing all just learnt.
+        - Broadcast this packet to all neighbours (use a flooding variant to ensure quick propagation).
+        - Compute the shortest path to each other router (perhaps using Dijkstra's shortest path algorithm).
+- Congestion and control flow in the network layer:
+    - The aim is to reduce the offered traffic entering the network
+    - Congestion control is concerned with ensuring that the subnet can carry the offered traffic - a global issue concerning all hosts and routers working together.
+    - Flow control is concerned with end-to-end control (possibly multiple hops apart).
+    - Avoid congestion by not transmitting unless we know its safe (can ask permission if it safe to transmit)
+- Load shedding: If not all demand can be met, some section is deliberatley disadvantaged
+    - The approach is to discard packets when they cannot all be managed
+    - If there is inadequate router memory then discard some incoming packets
+    - Can consider the priority of each packet
+    - Can examine the type of traffic being carried
+    - Need to balance 'reasonable delay' and 'user freedom' and  maintain fair access to all network users
+- The leaky bucket algoritm:
+    - Enables a fixed amount of data to leave a host per unit time.
+    - It provides a single server queueing model with a constant service time.
+    - Does not work well with bursty traffic
+- The token bucket algorithm:
+    - provides a bucket of permit tokens - before any packet may be transmitted, a token must be consumed.
+    - Tokens 'drip' into the bucket at a fixed rate
+    - if the bucket overflows with tokens they are simply discarded (the host does not have enough traffic to transmit).
+    - Packets are placed in an 'infinite' queue. Packets may enter the subnet whenever a token is available, else they must wait.
+    - The token bucket algorithm enables a host to transmit in short bursts, effectively 'saving up' limited permission to generate a burst.
+
