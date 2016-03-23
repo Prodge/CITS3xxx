@@ -1,0 +1,3 @@
+- Regular expressions: specify patterns in strings
+- Can use regex in 'string object'.search(regex_here);
+- A pattern can be repeated a fixed number of times by following it with a pair of curly braces encloing a count
