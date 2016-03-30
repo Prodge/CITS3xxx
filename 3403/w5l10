@@ -1,0 +1,22 @@
+- It's better to avoid the "new" keyword where possible
+- dynamic list operations:
+    - Pushing and popping allows an array to be treated like a stack
+    - Pushing and shifting allaws an array to be treated like a queue
+- Functions should be defined before use in the page header - or linked in an external file
+- Extra function arguments are ignored - no error
+- Not enough function arguments will run with args as undefined
+- Functions are objects
+- A variable not declared using var has global scope - visible throughout the page, even if used inside a function definition
+- A variable declared with var outside a function definition has global scape
+- A variable declared with var inside a function has local scope visible only inside the function
+    - However it is accessible anywhere within that function
+        function my_funq(param){
+            if (...){
+                var a = 'test';
+            }
+            console.log(a);
+        }
+        >> 'test'
+- can get additional function arguments from arguments[]
+- Javascript objects are sumply collections of name-valeu pairs
+    - They are simmilar to maps / dictionarys
