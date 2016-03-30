@@ -1,0 +1,40 @@
+- The z-buffer algorithm - also called depth buffer
+    - A buffer used to store the depth value of each piel
+    - Before writing a pixel in the frame buffor, the distance 'z' of the pixel corresponding to the current triangle is compared with the existing depth value in the buffer
+        - If it is smaller than the depth value in the buffor the z-buffer is updated
+        - Otherwise discard - The triangle is considered further away
+- Input modes:
+    - Input devices contain a trigger which can be used to send a signal to the operating system
+    - When triggered input devices return information to the system - eg. key pressed
+    - Request mode:
+        - Input provided to program only when user triggers the device
+    - Event mode:
+        - Each trigger generates an event whose measure is put in an event queue which can be examined by the user program
+- Event types:
+    - Window resize, expose
+    - Mouse click, move
+    - Keyboard press, release
+    - Idle - no event
+- Callbacks:
+    - Programming input for event driven interface
+    - Define a callback function for each type of event the graphics system recognises
+    - This user suppluef function is executed when the event occurs
+    - eg. glutMouseFunt(myMouseFunctionHere)
+    - glutDisplayFunc is the only neccesary callback so that a window is displayed
+- Glut event loop:
+    - glutMainLoop;
+    - Executed continuously throughout program
+- Posting redisplays:
+    - Many events may invoke the display callback function, this can lead to multiple calls on a single pass through the event loop
+    - We can avoid this problem by instead using glutPostRedisplay() which sets a flag
+    - Glut checks to see if the glag is set at the end of the event loop - if set the display callback function is executed
+- Linear independance
+    - If a set of vectors is linearly independant, we cannot represent one vector in terms of the other vectors
+    - If a set of vectors is linearly dependant, at least one can be written in terms of the others
+    - Orthogonality implies linear independance
+    - Linear independance does not imply orthogonality
+- Frames
+    - A coordinate system is insufficient to represent poins
+    - If we work in an affine space we can add a single paint, the origin, to the basis vectors to form a frame
+    - Affine space: parrallel lines remain as parrallel after the projection
+    - A coordinate in a frame is determined by (p0, v1, v2, v3)
