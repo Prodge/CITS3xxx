@@ -1,68 +1,99 @@
-- Multimodal data: a dataset that contains more than one mode (2 most commonly occuring values)
-- No mode when each value only occurs once
-- midrange - The average of the min and max of the dataset
-- Positivley Skewed - Mode < Median
-- Negativley Skewed - Mode > Median
-- Quantiles - dividing the data into equal-sized subsets
-- Interquartile range = Q3 - Q1
-- 5 number summary:
-    - Median
-    - Quartiles Q1 and Q3
-    - Smallest and largest individual observations
-- Outliers - 1.5 x interquartile range above Q3 or below Q1
-- Variance is only used when the mean is considered as the centre of the dataset
-- Quantile plot - Sort the dataset into ascending order and construct a matching list for Fi
-    - Fi = (i - 0.5) / N
-- Scatter plots show correlation and skewedness
-- If attributes correlate, then we can use only one of those attributes
-- Loess curve - Add a smooth curve to a scatter plot to provide better perception of the pattern of dependence
-- Data pre-processing
-    - Data cleaning
-        - Fill in missing values
-        - Smooth noisy data
-        - Remove outliers
-        - Resolve inconsistencies
-    - Data integration
-        - Integration of multiple databases, Data cubes or files
-    - Data transformation
-        - Normalizationand aggregation
-        - Convert to different units
-    - Data reduction
-        - Obtains reduced representation in valume but produces the same or similar analytical results
-        - Remove correlated atributes
-    - Data descretization
-        - Part of data reduction but with particular importance, especially for numerical data
-- Data is likely to originate from multuple hetrogeneous sources
-- Dirty data:
-    - Incomplete data
-        - Lacking attribute data
-    - Noisy data
-        - Faulty data collection instruments
-        - Data entry error
-        - Errors in data transformation
-    - Inconsistant data may come from
-        - Different sources
-        - Violation of functional dependancy
-        - Lack of standardisation
-    - Duplicate data
-- Data quality can be measured by: * = important
-    - Accuracy*
-    - Completeness*
-        - No missing attributes
-    - Consistancy*
-        - The degree to which all required attributes are filled in
-    - Timeliness
-        - Updated regularly
-    - Believability
-        - Trustworthy data
-    - Value added
-        - Informative and non-redundant
-    - Interpretability
-    - Accessibility
-    - Uniformity
-        - The degree to which a set of data measures are specified using the same units
-- Handle missing data:
-    - Missing data may need to be inferred based on regression or bayesion formula or decision tree
-    - Ignore the tupple
-    - Fill it automatically with a global constant eg. 'unknown'
--
+- A data cube is a lattice of cuboids.
+- Data warehouse design template:
+    - Choose a business process to model
+        - orders, invoices, shipments, sales
+    - Choose the grain [atomic level of data] of the business process
+        - Individual transactions, Individual daily snapshots
+    - Choose dimensions that will apply to each fact table record
+        - Typical dimensions are time, item, customer, supplier, warehous, transaction type
+    - Choose the measure that will populate each fact table record
+        - Typical measures are numeric additive quantities like dollars_sold and units_sold
+- Concept heirarchy
+    - Defines a sequence of mappings from a set of low-lever concepts to high-level, more general concepts
+- Scheme heirarchy
+    - A concept hierarchy that is a total or partial order among attributes in a database schema
+        - Total order: street < city < state < country
+        - Partial order: day < {month < quarter} < year
+    - Set-grouping heirarchy
+        - Defined by descretizing or grouping values for a given dimension or attribute
+- Use consolidated cells in jedox to group values
+- [] in jedox columns specifiel the level of the concept heirarchy
+- A data cube measure is a numeric function that can be evaluated at each point in the data cube space
+    - A measure value is computed for a given point by aggregating the data and corresponding to the respective dimension-value pairs defining the given point
+- Types of measures:
+    - Grouped whether they can be aggregated or partitioned easily
+    - Distributive
+        - Easiest to calculate on large datasets
+        - Parallel computing
+        - Chopping your data into blocks will not affect the final calculation
+        - An aggregate function is distributive if it can be compounded in a distributive manner by applying the same function on partitioned sets
+        - count(), min(), and max() and distributive aggregate functions
+    - Algebraic:
+        - Each argument of the function can be calculated distributivley
+        - An aggregate function is algebraic if it can be computed by an algebraic function with M arguments
+            - Where M is boinded by a positive integor
+        - Each of which is obtained by applying a distributive aggregate function
+        - avg() can be computed by sum()/count() where both sum() and count() are distributive
+    - Holistic
+        - Most difficult to compute
+        - Need to look at all the data together
+        - Difficult to break into blocks
+        - Often approaches exist to find approximations in a distributive manae
+        - Median(), Mode() and rank()
+- Typical OLAP operations
+    - Roll up - drill up:
+        - Summarize data by clumbing up the huirarchy of by dimension reduction
+        - Summarize to a higher level
+    - Drill down - roll down
+        - Reverse of roll up
+        - From a higher level summary to lower lever summary or detailed data, or introducing new dimensions
+    - Slice and dice:
+        - Project and select
+        - Selecting certain combinations of dimensions
+    - Pivot:
+        - Reorient the cube
+        - Visualising
+        - 3D to series of 2D planes
+    - Drill across: involving across more than one fact table
+    - Drill through:
+        - Through the bottom level of the cube to its back end relational tables using sql
+        - Bring up the tables that are contributing to the cube
+- Top down: starts with overall design and planning - mature
+- Bottom up: starts with experiments and prototypes - rapid
+- A data cube is a lattice of cuboids
+    - Each cuboid represents a group-by
+    - The Base cuboid is the least generalised of all the cuboids
+    - The apex cuboid is the most generalised of all the cuboids
+- Cell types:
+    - Base cell
+        - A cell in the base cuboid
+    - Aggregate cell
+        - A cell from a nonbase cuboid
+        - It aggregates over one or more dimensions
+    - A cell is whitten as a = (a1, a2, .., an, measure)
+    - An aggregated dimension is indicated by a *
+    - a in an m-dimensional cell if  exactly m values in {a1, a2, ..., an} are not *, m (m<=n)
+        - If m = n, then a is a base cell
+- Types of cubes
+    - Full cube
+        - All cells and cuboids are materialized
+        - All possible combination of  dimensions and values - expensive to calculate
+        - Can easily completely run out of memory calculating the whole cube
+    - Iceberg cube
+        - Calculating things that look interesting (poking out above the water)
+        - Specify our conditions for the 'water level'
+            - eg. only if the measured value is above x
+        - Partial materialization
+            - Tradeoff between storage space and response time for OLAP
+            - Materializing only the cells in a cuboid whose smeasure value is above the minimum threshhold
+        - Closed cube
+            - No ancestor cell is created if its measure is equal to that if its descendent cell
+            - The ancestor values are all depending on the descendants
+        - Shell cube
+            - Only cuboids with limited number of dimensions are precomputed
+            - Select the important dimensions
+- Closed cell:
+    - A cell 'c' is a closed cell if there exists no cell 'd' such that 'd' is a specialization (descendant of cell 'c' (ie. where 'd' is obtained by replacing * in 'c' with a non-* value), and 'd' has the same measure value as 'c'
+    - No ancestor cell is created if its measure is equal to that of its descendant cell
+- Closed cube:
+    - A closed cube is a data cube consisting of only closed cells
