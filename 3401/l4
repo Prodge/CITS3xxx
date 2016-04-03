@@ -1,0 +1,81 @@
+- Top down - Apex cuboid to the base cuboid
+- Bottom up - Base cuboid to the apex cuboid
+- Multiway Array aggregation
+    - Array-based  bottom up approach (lecturer calls it bottom up, everything else calls it top down)
+    - Used for MOLAP and full cube computation
+    - using multi-dimensional chunks
+        - Direct array addressing
+    - Simultaneous aggregation on multiple dimensions
+    - Intermetiate aggregate values are re-used for computing ancestor cuboids
+    - Cannot do Apriori pruning: no iceberg optimization
+    - Chunks are named by the smallest plane
+    - Method: The planes should be sorted and computed according to their size in ascending order
+        - Idea: keep the smallest plane in the main memory, fetch and compute only one chunk at a time for the largest plane
+    - Limitation of method:
+        - Computing well only for small number of dimensions
+        - If there are a large number of dimesnionns, "top down" computation and iceberg cube computation methods can be explored
+- The base cuboid
+    - Denoted by ABC (from which all other cuboids are directly or indirectly computed)
+    - this cube is already computed and corresponds to the given 3D array
+- The 2D Cuboids
+    - AB, AC and BC which respectivley correspond to the group-by's AB, AC and BC
+    - These cuboids must be computed
+- The 1D Cubooids
+    - A, B and C which respectivley correspond to the group-by'- A, B and C
+    - These cuboids must be computed
+- The 0D (apex) cuboid
+    - Denoted by all, which corresponds to the group-by();
+        - That is, there is no group-by here
+    - This cuboid must be computed
+    - It consists of only one value
+    - If the data measure was count, this could contain the sum of all counts
+- Bottom up computation - lecturer calls it top down... great..
+    - Divides dimensions into partitions and facilitates iceberf pruning
+    - If a partition does not satisfy min_sup, its descendants can be pruned
+    - If minsup = 1 -> compute full cube
+    - No simultanious aggregation
+    - Usually entire data set cant fit in main memory
+    - Sort distinct values - partition into blocks that fit
+    - Optimisations:
+        - Partitioning - external sorting, hashing and counting sort
+        - Ordering dimensions to encourage pruning
+            - Cordinality, skew, correlation
+            - higher the cardinatity - smaller tha partitions - greater pruning opportunity
+        - Collaptisg duplicates
+            - Cant do holistic agregates anymore
+    - Ideally the dimension with most discriminative, higher cardinality and having less skew is processed first
+- A data object represents an entity
+    - Often referred to as samples, instances, data points, objects (oop)
+- An attribute is a data field representing a characteristic of a data object
+    - Often referred to as dimensions, features, variables
+- Attribute vectors or feature vectors - A set of atributes describing a type of objects
+- Nominal attributes
+    - Relating to names
+    - Also referrod to as 'categorical' or in programming 'enumerations'
+    - No meaningful ordering - eg. hair colour
+- Binary/ boolean attributes
+    - A special type of nominal attribute with only to categories or states
+    - If the data is asymmetric - one is preffered more than the other:
+        - 0 for Benign and 1 for Malignant
+- Numeric attributes
+    - Interval scaled attributes
+        - Measured on a scale of equal sized units
+        - no true zero point
+        - ALlows for ordering and quantifying the differences between values but not ratios
+        - Ordinal data
+    - Ratio scaled attributes
+        - Numeric attributes with an inherit zero point
+        - Allows for expressing a value as being multiple - or ratio - of another value
+- Discrete attributes:
+    - Have finite or countably infinite number of values
+    - Can use an integer to represent in programs
+- Continuous attributes:
+    - In the classic sense, continuous variables are real numbers
+    - Often represented using floating point numbers
+- Bimodal data - Two frequent values occuring
+    - Two humps on the histogram
+- Trimmed mean:
+    - Remove the smallest and largest 2% of values and calculate the mean
+    - Attempts to reduce the weight of outliers
+- Median is hard to calculate for very large datasets
+    - Can use a binning technique to approximate the median
