@@ -1,0 +1,68 @@
+- Multimodal data: a dataset that contains more than one mode (2 most commonly occuring values)
+- No mode when each value only occurs once
+- midrange - The average of the min and max of the dataset
+- Positivley Skewed - Mode < Median
+- Negativley Skewed - Mode > Median
+- Quantiles - dividing the data into equal-sized subsets
+- Interquartile range = Q3 - Q1
+- 5 number summary:
+    - Median
+    - Quartiles Q1 and Q3
+    - Smallest and largest individual observations
+- Outliers - 1.5 x interquartile range above Q3 or below Q1
+- Variance is only used when the mean is considered as the centre of the dataset
+- Quantile plot - Sort the dataset into ascending order and construct a matching list for Fi
+    - Fi = (i - 0.5) / N
+- Scatter plots show correlation and skewedness
+- If attributes correlate, then we can use only one of those attributes
+- Loess curve - Add a smooth curve to a scatter plot to provide better perception of the pattern of dependence
+- Data pre-processing
+    - Data cleaning
+        - Fill in missing values
+        - Smooth noisy data
+        - Remove outliers
+        - Resolve inconsistencies
+    - Data integration
+        - Integration of multiple databases, Data cubes or files
+    - Data transformation
+        - Normalizationand aggregation
+        - Convert to different units
+    - Data reduction
+        - Obtains reduced representation in valume but produces the same or similar analytical results
+        - Remove correlated atributes
+    - Data descretization
+        - Part of data reduction but with particular importance, especially for numerical data
+- Data is likely to originate from multuple hetrogeneous sources
+- Dirty data:
+    - Incomplete data
+        - Lacking attribute data
+    - Noisy data
+        - Faulty data collection instruments
+        - Data entry error
+        - Errors in data transformation
+    - Inconsistant data may come from
+        - Different sources
+        - Violation of functional dependancy
+        - Lack of standardisation
+    - Duplicate data
+- Data quality can be measured by: * = important
+    - Accuracy*
+    - Completeness*
+        - No missing attributes
+    - Consistancy*
+        - The degree to which all required attributes are filled in
+    - Timeliness
+        - Updated regularly
+    - Believability
+        - Trustworthy data
+    - Value added
+        - Informative and non-redundant
+    - Interpretability
+    - Accessibility
+    - Uniformity
+        - The degree to which a set of data measures are specified using the same units
+- Handle missing data:
+    - Missing data may need to be inferred based on regression or bayesion formula or decision tree
+    - Ignore the tupple
+    - Fill it automatically with a global constant eg. 'unknown'
+-
