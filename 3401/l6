@@ -1,0 +1,39 @@
+- Handling noisy data
+    - Binning
+        - Partition data into equal frequency bins
+        - Then data can be smoothed by bin means / medians or bin boundaries
+        - Equal width partitioning:
+            - Divides the range into n intervals of equal size
+            - If a and b are the lowest and highest values of the attribute the width of the intervals will be:
+                W = (B - A) N
+            - Skewed data is not handled well
+            - Outliers may dominate presentation
+        - Equal depth (frequency) partitioning
+            - Divides the range into N intervals, each containing approximately the same number of samples
+            - Good data scaling
+            - Managing Categorical attributes can be tricky
+    - Regression
+        - Smooth by filtering the data by regression functions
+        - Outliers are removed because you are fitting your data to a smoothed function
+    - Clustering
+        - Identify data point clusters
+        - Can be visually identified when plotted on a 2d plot
+        - Points outside of clusters are treated as outliers
+- Data cleaning:
+    - Data descrepancy detection
+        - Use metadata (legal values, dependancy, distribution)
+        - Cleck field overloading
+        - Check for:
+            - Uniqueness rule: data should be unique
+            - Conservative rule
+            - Null rule: whether a value should be null or not
+    - Data migration tools allow tronsformations to be specified
+    - ETL (Extraction/Transformation/Leading) tools allow users to specify transformations through a graphical user interface
+    - Schema integration: integrate metadata from different sources
+    - Detecting and resolving data conflicts:
+        - Different units of measurement
+- Redundant data can often occur when integrating multiple databases into one
+    - These values may be able to be detected by correlation analysis
+        - Chi square test and contingency table for correlation analysis
+            - Contingency table looks at frequency of values occuring
+- Plots with lots of lines can be produced as a 3D chart
