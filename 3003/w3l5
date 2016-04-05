@@ -1,0 +1,7 @@
+- Input modes:
+    - Request mode
+        - Input provvided to program only when user triggers the device
+        - Typical of keyboard input
+    - Event mode
+        - Each input trigger generates an event whose measure in put in an event queue which can be examined by the user program
+

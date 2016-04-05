@@ -1,0 +1,22 @@
+- Linking shaders with application
+    - Read shaders
+        - Shaders are added to the program object and compiled
+        - Usual method of passing a shoder is as a null-terminated string using the function glShaderSource
+        - If the shader is in a file we can white a reader to convert the file to a string
+    - Compile shaders
+    - Create a program object
+        - A container for holding shaders (vertex and fragment shaders)
+        - Has an integer identifier which we can refer to in our application
+    - Link everything together
+    - Link variables in application with variables in shaders
+        - Vertex attributes
+            - Vertex attributes are named in the shaders
+            - Linker forms a table
+            - Application can get index from table and tie it to the application variable
+            - Similar process for uniform variables
+        - Uniform shaders
+- Double buffering
+    - Need to provont a partially redrawn frame buffer from being displayed
+    - Draw into back buffer
+    - Displa front buffer swap buffers after updating finished
+- Idle callback specifies the function to be executed when no other actions are pending
