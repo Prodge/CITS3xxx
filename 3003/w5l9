@@ -1,0 +1,12 @@
+- Vertex shader applications
+    - Geometric transformations
+        - Change relative location, rotation, scale
+        - 3D perspective transformation - make far objects smaller
+    - Movinng vertices
+        - Morphing
+        - Wave motion & deformation due to physical forces
+        - Particle effects
+        - Fractals
+    - Lighting
+        - Calculate shading colour using light and surface properties
+- There are no pointers in GLSL
