@@ -1,0 +1,34 @@
+- Wireless:
+- Not all nodes are in range of each other so they cannot nececarily listen to the medium to decide if its busy
+- 802.11 employs collision avoidance to reduce (but not eleminate) the liklihood of collisions occuring.
+    - The algoritms is terme Multiple Access with Collision Avoidance (MACA), or CSMA/CA
+        - Both Physical channel sensing and virtual channel sensing are employed
+    - The sending node first sends a request to send packet RTS containing its address and its destination address and how long the node wants to own the medium
+    - The recieving node then sends a clear to send packet CTS
+    - The sending node sends its data
+    - The recieving node sends an ACK
+    - All other nodes that can hear these transmissions will power down for the time specified in the CTS / RTS
+- Although two modile nodes can communitace directly, the more usual approach is for all communications to be through fixed access points
+- A mobile node 'associates' with a single access point if all of its communications are via that point.
+    - All such nodes form a cell
+- The mechanism emproyed by a mobile node to select an access point is termed active scanning
+    - the mobile client node sends Probe frames,
+    - all access-points within range reply (if they have capacity) with a Probe Response frame,
+    - the mobile node selects an access-point and sends an Association Request frame, and
+    - the access-point responds with an Association Response frame.
+- An alternative is for an access-point to use passive scanning:
+    - the access-point periodically sends Beacon frames advertising its existence and abilities (e.g. supported bandwidths),
+    - the mobile node may choose to switch to this new access-point using Disassociation and Reassociation frames.
+    - When a node selects a new access-point, the new access-point is expected to inform the old access-point using the distribution system.
+- Attacks against wireless networks
+    - Physical layer attacks
+        - Attackers of wireless networks need not be close to the network infrastructure
+        - An attacker may develop a device to simply saturate the frequency bands with RF noise
+            - This reduces the signal to noise ration making it difficult to discern any valid signal
+    - Data link attacks
+        - It is simple to configure a laptop and its wireless card to masquerade as an access-point
+            - If a victims node associates with the access point the attacker can monitor or drop all traffic from the victim
+- As wireless is a shared medium, all traffic may be intercepted by a potential intruder
+- WEP keys need to be distributed in some mannar
+- If WEP traffic is logged enough, the wep key can be determined
+- 15gb is reqiured for table based attacks
