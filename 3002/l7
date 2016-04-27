@@ -1,0 +1,47 @@
+- An internetwork must:
+    - (eg connecting switches together (connecting networks))
+    - Provide a link between networks (at minimum a physicaly link and control connection)
+    - Provide routing and delivery of data between processes on different networks
+    - Provide an accounting service, keeping track of the status of the networks and gateways
+    - Accomodate the differences between different subnetworks including:
+        - Different physical addressing schemes
+        - Different maximum packet sizes
+        - Different network access mechanisms
+        - Different timeout and retry schemes
+        - Quality of error recovery
+        - Different authentication practices
+        - Different data representations
+ - With this in mind, the TCP/IP architecture organizes protocols into four layers (some texts argue for a five-layer model, in which the Process/Application layer is split in two, with well-understood applications forming the fifth layer).
+     - Protocols in the network access layer route data between hosts attached in the same network.
+     - Protocols in the internet layer route data across multiple networks and hosts.
+ - Internet layer protocols are implemented in both hosts and gateways - where a gateway is understood to connect two networks and must relay data between both networks, both using an Internet protocol.
+ - The host/host layer contairs 4 protocols that are in frequently used depending on quality of service and length of connections required
+ - The process/application layer protocols define resource sharing (eg. host to host) and remote access (terminal to host)
+    -  A reliable connection-oriented data protocol providing reliable, sequenced delivery (the Transmission Control Protocol, TCP, akin to the ISO Class 4 transport protocol) [RFC-793].
+    -  A low overhead, minimum functionality datagram protocol (the User Datagram Protocol, UDP) [RFC-768].
+    -  Reliable datagram protocols, providing low overhead communication for 'bursty' delivery between 'random' endpoints - good for speech and low-definition video streams [RFC-908].
+    -  A real-time streaming protocol, characterized by the need for handling a steady stream with minimum delay variance [RFC-2326].
+ - Well understood process/application layer protocols include FTP, HTTP SMTP and TELNET
+ - Each computer or device accesible using internet protocols (IP) has at least one unique address within its subnet
+ - Internet addressing schemes acommodate both large and small network topologies
+     - A class is defined by prepending bits to the address
+     - Each class level can have progressivley more networks and less hosts within the network
+ - With the advent of CIDR, the classful restrictions no longer exist. Address space may be allocated and assigned on bit boundaries, and routers may use one aggregated route (like 194.145.96.0/20) instead of advertising 16 class C addresses
+ - The Address Resolution Protocol (ARP) is a special protocol designed to map Internet to physical addresses.
+     - When a gateway needs to know the physical address for an Internet address of a host known to be on its network, it broadcasts an ARP frame requesting the physical address.
+     - The required host replies; the gateway caches the address for future reference.
+     - Arp is a low-leel protocol that hides the underlying physical addressing
+        - ermitting one or more internet addresses to be assigned te each machine
+    - Arp is consisted part of the physical network system, not strictly part of the internet protocols
+- DHCP (dynamic host confguration protocol)
+    - Enable individual computers on an IP network to extract their configurations from a server (the dhcp server)
+    - The most significant peice of information distributed is the IP address
+    -  DHCP is based on BOOTP and maintains some backward compatibility.
+        - The main difference is that BOOTP was designed for manual pre-configuration of the host information in a server database, while DHCP allows for dynamic allocation of network addresses and configurations to newly attached hosts
+        - DHCP allows for recovery and reallocation of network addresses through a leasing mechanism.
+    -  DHCP, like BOOTP, runs over the user-datagram protocol (UDP),
+- The many internet protocals natually depend on each other, that is they demand the services provided by other protocols
+- IMCP (internet control message protocol)
+    - Allows gateways and hosts to echange bootstrap and error information.
+    - Gateways send ICMP datagrams when they cannot deliver a datagram OR to dirict hosts to use another gateway
+    - Hosts send ICMP datagrams to test the 'livlieness' of their network
