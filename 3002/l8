@@ -1,0 +1,47 @@
+- TCP/IP uses 32-bit ipv4 addresses to deliver data first to the correct network and then to the correct host on that network
+- Port numbers identify operating system independant points of activity
+- The Transmission Control Protocol (TCP) transforms the 'raw' IP into a full-duplex reliable character stream
+- TCP uses a 'well-understood' sliding window with selective-repeat protocol, and conveys a number of important fields in its TCP frame header:
+    - Source port
+    - Destination Port
+    - Sequence number (data)
+    - Sequence number (ack)
+    - Window
+    - TCP Flags
+    - Checksum
+    - TCP Options
+    - Offset
+ - TCP Provides 6 major features
+    - Connection orientation - for two programs to employ TCP/IP, one program must first request a connection to the destination before communication may proceed.
+    - Reliable connection startup - when two applications create a connection, both must agree to the new connection. No packets from previous, or ongoing, connections will interfere.
+    - Point-to-point communication - each communication session has exactly 2 endpoints.
+    - Full-duplex communication - once established, a single connection may be used for messages in both directions.
+    	-This requires buffering at both each input and output 'end', and enables each application to continue with computation while data is being communicated.
+    -Stream interface - from the application's viewpoint, data is sent and received as a continuous sequence of bytes.
+    	- Applications need not (but may) communicate using fixed-sized records. Data may be written and read in blocks of arbritary size.
+    - Graceful connection shutdown - TCP/IP guarantees to reliably deliver all 'pending' data once a connection is closed by one of the endpoints.
+- TCP Connection Establishment and teardown
+	- A three way handshake is emplayed
+	- A sends a control packet (a synchronisation packet)
+    - B responds with a synchronisation packet and acknowledges the synchronisation packet fro A
+    - A acknowledges that it recieved the synchronisation packet from B
+- As TCP/IP uses a sliding window protocol, timeouts are employed to force re-transmissions.
+- TCP Congestion control
+    - The TCP receiver normally fills the Window field of an acknowledgment header to report how much additional buffer space (the receiver's window size) is available for further data.
+    - When a message is lost, TCP commences by sending a single packet.
+        - If an acknowledgment for this single packet returns, the sender next transmits two packets
+        - if all of their acknowledgments return, up to four, and so on.
+    - In effect, the protocol grows (doubles) the sender's sliding window until packets are lost; it then restarts at 1.
+    - TCP/IP responds to congestion by backing-off quickly, and avoids further congestion by slowly increasing offered traffic.
+ - Sockets are a generalization of the Unix file system I/O model.
+    - The most important difference is that the operating system binds file descriptors to files and devices when they are opened.
+    - With sockets, applications can specify the destination each time they use the socket.
+    - The socket layer provides the interface between user programs and the networking (via Unix system calls).
+-  Legal combinations of protocols and drivers are specified when the kernel is configured.
+    -  For example, sockets that share common communication properties, such as naming conventions and protocol address formats, are grouped into address families.
+    -  The Linux file /usr/include/bits/socket.h lists all supported address families.
+-  Processes communicate using the client-server paradigm.
+    - A server process listens to a socket,
+    - one end of a bidirectional communication path and the client processes communicate with the server over another socket,
+    - the other end of the communication path.
+    - The kernel maintains internal connections and routes data from client to server.
