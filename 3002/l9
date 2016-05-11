@@ -1,0 +1,47 @@
+- Data confidentiality: protects data as it traverses the network from being desclosed to incorrect parties
+- Data integritp: protects data from modification or removal while in the network
+- Data origin authentication: authenticates the sender of the data
+- Data receiver authentication: validates the receiver of the data
+- Peer-entity authentication: validates all network components such as hardware routers and peer software compenents through which a data stream much traver
+- Non-repudiation: creates and verifies evidence that the claimed sender sent the data
+    - That the intended receiver did recieve it and that neither can deny that this occured
+- Known plaintext attack: A block of plaintext is mapped to its ciphertext. Obtainable via predictable static payloads
+- Chosen plaintext attack: attacker has he victim encrypt known blocks of data
+- Differential analysis: A kind of plaintext attack involving many very similar plaintexts being encrypted, and their resulting ciphertexts being compared
+- An algorithms strength is not simply derived from its keys length, but from its peer evaluation and publicreview
+- A weak algorithm is one whose algoritsm and implementation are not available, and whose strength would be comprimised if these were made public
+- If the method of encipherment becomen known to one's adversary, this should not prevent one form continuing to use the cipher as long as they key remains unknown
+- Symetric ciphers:
+    - The same key is used for both encryption and decryption
+    - The key must be kept private
+- The Diffie-Hellman key exchange technique enables two active participants (who may never have met) to agree on a new, temporary, session key with which they will exchange a message.
+    - A simple (physical) analogy of how keys can be exchanged:
+        - A wants to send a key to B.
+        - A puts the key in a secure box and locks it with A's padlock.
+        - B does not have the key to A's padlock, so instead,
+        - B receives the box and adds B's own padlock to the box and returns it to A.
+        - A removes A's padlock with A's own key and sends the box back to B.
+        - B can now remove B's own padlock and remove the key which is now shared by A and B.
+- RSA is an example of an asymmetric cipher, employing different keys for encryption and decryption. The relationship between keys simplifies an attack.
+- Keys for asymmetric ciphers need to be longer than keys for symmetric ciphers to achieve similar resistance to brute-force attacks:
+- Unlike traditional signatures, a digital signature cannot be a constant; it must be a function of the document that it signs.
+- A digital signature prevents two types of fraud -
+	- the forging of a signature by the receiver (or any third party), and
+ 	- the repudiation of the transmission of a message by the sender.
+- Two categories of digital signature are identified:
+	- True signatures, signed by the sender, verified by the receiver.
+	- Arbitrated signature may only be sent and verified through a trusted third party. The recipient is unable to verify the sender's signature directly, but is assured of its validity through the mediation of the arbitrator.
+- A message digest is a 16-, 20-, 32-byte 'fingerprint' of a message.
+	- Message digests are central to digital signatures.
+	- When a message is signed, its contents are first hashed to give a message digest.
+        - The digest is then encrypted with the sender's secret key, giving a proof of the sender's identity.
+	- A good digest must have the properties:
+		- An absence of collisions. Unlike simpler file checksums, which quickly demonstrate file or data integrity, it must be hard to find two messages with the same digest.
+		- Must not be invertible. Digests are deterministic many-to-one functions.
+		- A uniform distribution of results. A change in just one input bit should affect at least half the output bits.
+- Digital certificates have been loosely described as the driver's license for the Internet.
+- A digital certificate provides a binding between an entity's public key, and one or more attributes to its identity.
+	- An entity may be a person, a executing piece of software, or a device such as a router or a smart-card.
+	- A certification authority (CA) attests to the authenticity of the entity's public key by digitally signing a message with its own private key.
+	- The 'quality' of the certificate depends on the detail of information provided to the CA (more later).
+	- Either, public and private keys may be issued by the CA, or the CA may challenge the entity's public key.
