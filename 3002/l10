@@ -1,2 +1,39 @@
 - The Secure Sockets Layer (SSL) is a communications protocol implementing 3 cryptographic assurances - authentication, confidentiality, and message integrity.
 - An SSL-enabled client can use public-key cryptography to check that a server's certificate and public ID are valid and have been issued by a certificate authority (CA) listed in the client's list of trusted CAs.
+- SSL is a comminications protocol implementing 3 cryptographic assirances:
+    - Authentication
+    - Confidentiality
+    - Message integrity
+- SSL runs above TCP/IP and below higher level protocols such as HTTP, FTP or IMAP
+- SSL uses TCP/IP on behalf of the higher level protocols and in hte process allows:
+    - An ssl enabled server to authenticate itself to an SSL-enabled cleient
+        - An ssl enabled client can use public key cryptography to check that a server's certificate and public ID are valid and have been issued by a trusted CA
+    - Optionally allows the client to authenticate itself to the server using the same techniques
+    - Allows both machines to establish an encrypted connection.
+    - All data sent over SSL is protected against a man-in-the-middle attack with a mechanism for detecting tampering
+- Man-in-the-middle attack:
+    - Intercepts the key exchange between the client and the server
+        - Switches the certificate with the attackers certificate
+    - Also connects to the server with the initially aquired information
+    - Attacker decrypts the trafic from the client with their key and re encrypts it to send to the server
+    - Attacker can modify or store any data
+- Client server computation is the logical extension of modular programming
+    - Modular programming has as its fundemental assumption that seperation of a large piece of software into its constituent parts (modules) creates the possibility for easier deveopment and better maintainability
+- A two-teir architecture is one where a client talks directly to asrevrer, with no indervening server
+- A three-teir architecture introduces another server (or an agent) between the client(s) and the traditional server
+    - The agent can perform many roles such as:
+        - Translation services
+        - Metering services
+        - Intelligent agent servers (as in mapping a request to a nmuber of different servers, collating the results, and returning a single response to the client)
+- Partitioning a program into client/server responsibilities
+    - Is there a functional partition at all?
+    - Is there a data-driven partition?
+    - Is there an extensive use of global variables?
+    - Are there any hidden intra-application communication mechanisms (such as variables, exceptions, or signals)?
+- Concurrency is derived from using a 'non-queuing' model of execution, either by using a new (copy of the) server to support each client, or to provide faster, 'time-sliced' response to each client.
+- Increased concurrency, and hence speed, is required (demanded) when:
+    - forming responses requires significant I/O.
+    - processing time is proportional to the type of request.
+    - application-specific, high-performance, hardware is available.
+- iterative servers - single request at a time.
+- concurrent servers - multiple 'simultaneous' requests.
