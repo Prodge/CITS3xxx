@@ -1,0 +1,2 @@
+- The Secure Sockets Layer (SSL) is a communications protocol implementing 3 cryptographic assurances - authentication, confidentiality, and message integrity.
+- An SSL-enabled client can use public-key cryptography to check that a server's certificate and public ID are valid and have been issued by a certificate authority (CA) listed in the client's list of trusted CAs.
