@@ -1,0 +1,17 @@
+ - Quality assurance is about meeting the needs of the customer
+ - Bespoke software: tailored to a particular client
+ - The client wont tell you all the good things about their present system
+    - Will be more focused on the problems
+ - Software projects have MANY stakeholders
+ - Users don't want to spend time learning
+ - Major cost is people
+ - Risk management is an important part of planning
+ - Plans should be regularly reviewed
+ - There are complex, non-linear trade-offs between the needs of different stakeholders
+ - Must find a ballance of user expectations: Capability, Time, Quality, Costs
+ - Customers are going to change their mind
+ - The developer is the trigger for the customer changing their mind
+    - As you talk to the client about how they are going to use their system they are going to realise they haven't told you everything OR they haven't thought about everything
+    - Try to stimulate this thought early on
+        - Protypes
+        - Detailed feature discussions
