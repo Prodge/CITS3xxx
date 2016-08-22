@@ -1,0 +1,37 @@
+- The word engineer implies responsibility
+- Programmers focus on writing great code
+- Software engineers are trained to meet hte goals of a software project in an efficient way
+    - Understand the software lifecycle
+        - The role of users
+        - Requirements
+        - Testing
+        - Management
+        - Refinement
+    - Understand ethics
+- Clients don't understand what they want -> they don't know how to tell you what they want
+- Building a system that implements a bad process will end up being a bad system
+- Software engineers have war wounds
+- Make sure you have things in writing
+- Focus on the essential elements first
+- Provide mochups to allow the user to change their mind early
+- Under promise and over deliver
+- Contract for changes outside of spec -> client will request them
+- Don't bother considering performance if it doesn't need to scale
+- Don't assume
+    - The client knows what it is that they want
+    - That they can explain what they think they want
+    - That you have understood what you think they are tryng to explain
+ - Repeat what you have heard back in your own words
+ - Write out flow diagrams and discuss them
+ - Pull on loose ends -> if they say something that doesn't make sense
+ - Make sure you are speaking with all the stakeholders
+ - Make sure you are speaing with the most informed people possible
+ - Types of software development:
+    - Bespoke: users commission specific software
+    - General: you write software and then make it available for people to use
+    - Bespoke -> General
+- Bespoke - Client challenges
+- General - Market challenges
+- Appearances do count
+- Listen to your customer
+- Focus on the problem you are trying to solve
